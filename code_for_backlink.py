@@ -1,8 +1,14 @@
 import random
 import webbrowser
+<<<<<<< HEAD
 import codecs
 import html
  
+=======
+
+#TEST
+
+>>>>>>> d6e0275385e215ff27337933bb499c80f394e351
 def main():
     
     # Open the file and read all lines
