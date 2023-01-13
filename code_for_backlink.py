@@ -1,6 +1,7 @@
 import random
 import webbrowser
 import codecs
+import html
  
 def main():
     
@@ -20,17 +21,17 @@ def main():
 
     # Use the random line as the anchor text and keyword
     link = "https://www.google.com"
-    anchor_link1 = f'<a href="{link}" keyword="{keyword1}">{anchor_text1}</a><br />'
-    anchor_link2 = f'<a href="{link}" keyword="{keyword2}">{anchor_text2}</a><br />'
-    anchor_link3 = f'<a href="{link}" keyword="{keyword3}">{anchor_text3}</a><br />'
+    anchor_link1 = f'<a href="{link}" keyword="{keyword1}">{anchor_text1}</a> '
+    anchor_link2 = f'<a href="{link}" keyword="{keyword2}">{anchor_text2}</a> '
+    anchor_link3 = f'<a href="{link}" keyword="{keyword3}">{anchor_text3}</a> '
 
     # Write the anchor link to an HTML file
     with open("output.html", "w") as file:
         file.write("<!DOCTYPE html><html><head><title>Code For Backlink</title></head><body>")
         file.write(anchor_link1)
-        file.write("<pre><plaintext>Test")
-        file.write(anchor_link2)
-        file.write("</plaintext></pre>")
+        file.write("<pre><code>")
+        file.write(html.escape( anchor_link2 ))
+        file.write("</code></pre>")
         file.write(anchor_link3)
         file.write("</body></html>")
 
