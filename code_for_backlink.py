@@ -32,6 +32,7 @@ def main():
     with open("output.html", "w") as file:
         file.write('<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=TIS-620"><title>Code For Backlink</title></head><body>')
         file.write( "<h1>1. ลิงค์แบบ Anchor link</h1>" )
+        # file.write( "<pre>" ) 
         file.write( f'{unique_lines_comment[0]}' + " ")
         file.write(anchor_link1 + "<br />")
         file.write(anchor_link2 + "<br />")
@@ -39,6 +40,7 @@ def main():
         file.write(anchor_link4 + "<br />")
         file.write(anchor_link5 + "<br />")
         file.write(anchor_link6 + "<br />")
+        #file.write( "</pre>" ) 
         file.write( "<h1>2. ลิงค์แบบ HTML</h1>" )
         file.write(f'{unique_lines_comment[0]}' + " ")
         file.write(html.escape( anchor_link1 ) + "<br />")
