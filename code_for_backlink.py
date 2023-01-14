@@ -4,12 +4,15 @@ import codecs
 import html
 
 def main():
-    with open("keyword.txt", "r") as file:
+    with open("keyword.txt", "r", encoding="UTF-8") as file:
         lines = file.readlines()
-    with open("comment.txt", "r") as file:
+        
+    with open("comment.txt", "r", encoding='UTF-8') as file:
         lines_comment = file.readlines()
-    with open("link.txt", "r") as file:
+        
+    with open("link.txt", "r", encoding='UTF-8') as file:
         link = file.readlines()
+        
     unique_lines = random.sample(lines, 6)
     unique_lines_comment = random.sample(lines_comment, 1)
     random.shuffle(unique_lines)
@@ -27,7 +30,7 @@ def main():
     bbcode5 = f'[url={link}]{unique_lines[4]}[/url] '
     bbcode6 = f'[url={link}]{unique_lines[5]}[/url] '
     with open("output.html", "w") as file:
-        file.write("<!DOCTYPE html><html><head><title>Code For Backlink</title></head><body>")
+        file.write('<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=TIS-620"><title>Code For Backlink</title></head><body>')
         file.write( "<h1>1. ลิงค์แบบ Anchor link</h1>" )
         file.write( f'{unique_lines_comment[0]}' + " ")
         file.write(anchor_link1 + "<br />")
