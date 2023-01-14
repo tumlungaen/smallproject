@@ -1,0 +1,8 @@
+Web=https://www.youtube.com
+Name=Kiminoto
+Image_url=https://images.squarespace-cdn.com/content/v1/55a8d6f7e4b054bcba8dfc63/1553722667971-PCITKC64QFSB7YD343GI/test+1.png
+Date=2023-01-19
+Tag=Thailand, Japan, Hongkong
+Keyword1=Thailand
+Keyword2=Japan
+Keyword3=Hongkong
