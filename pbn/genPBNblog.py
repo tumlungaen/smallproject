@@ -1,11 +1,11 @@
 import webbrowser
 
 # Open the HTML template file
-with open('seo_structure.html', 'r') as file:
+with open('seo_structure.html', 'r', encoding="UTF-8") as file:
     html = file.read()
 
 # Open the keywords file
-with open('setting.txt', 'r') as file:
+with open('setting.txt', 'r', encoding="UTF-8") as file:
     settings = file.readlines()
 
 # Replace placeholders with keywords
