@@ -6,3 +6,4 @@ Tag=Thailand, Japan, Hongkong
 Keyword1=Thailand
 Keyword2=Japan
 Keyword3=Hongkong
+Intro=Hello this is introduction 100 words in setting.txt file
