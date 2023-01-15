@@ -19,6 +19,7 @@ with open('setting.txt', 'r') as file:
 # Open the topics file and create a list
 with open('topic.txt', 'r') as file:
     topics = file.readlines()
+    subtopics = file.readlines()
 
 # Open the articles file and create a list
 with open('article.txt', 'r') as file:
@@ -38,14 +39,15 @@ html = html.replace("{Keyword3}", settings_dict.get("Keyword3"))
 # Replace placeholders with topics
 html = html.replace("{Topic1}", topics[0].strip())
 
-for i, topic in enumerate(topics):
+for i, topic in enumerate(topics[1:]):
     placeholder = f"{{Topic2-{i+1}}}"
     html = html.replace(placeholder, topic.strip())
-    for j, subtopic in enumerate(topics):
-        placeholder = f"{{Topic3-{j+1}}}"
-        html = html.replace(placeholder, subtopic.strip())
 
-# Replace placeholders with articles
+#for i, subtopic in enumerate(subtopics):
+for i, subtopic in enumerate(topics[5:]):
+    placeholder = f"{{Topic3-{i+1}}}"
+    html = html.replace(placeholder, subtopic.strip())
+
 for i, article in enumerate(articles):
     placeholder = f"{{article{i+1}}}"
     html = html.replace(placeholder, article.strip())
