@@ -2,7 +2,7 @@ import webbrowser
 import random
 keyword_counter = 0
 
-def insert_keywords(article, keywords_dict, probability):
+def insert_keywords_backup(article, keywords_dict, probability):
     words = article.split()
     rand_num = random.random()
     if rand_num < probability: # Insert keyword
@@ -14,6 +14,19 @@ def insert_keywords(article, keywords_dict, probability):
         words.insert(rand_index,'')
     return " ".join(words)
 
+def insert_keywords(article, keywords_dict, probability):
+    words = article.split()
+    rand_num = random.random()
+    if rand_num < probability: # Insert keyword
+        rand_keyword = random.choice([keywords_dict.get("Keyword1"),keywords_dict.get("Keyword2"),keywords_dict.get("Keyword3")])
+        rand_index = random.randint(0, len(words))
+        rand_web = random.choice([keywords_dict.get("Web1"), keywords_dict.get("Web2")])
+        anchor_text = f'<a href="{rand_web}" keyword="{rand_keyword}" rel="follow">{rand_keyword}</a>'
+        words.insert(rand_index,anchor_text)
+    else:  # Insert empty string
+        rand_index = random.randint(0, len(words))
+        words.insert(rand_index,'')
+    return " ".join(words)
     
 # Open the HTML template file
 with open('seo_structure_full.html', 'r') as file:
@@ -42,7 +55,8 @@ with open('article.txt', 'r') as file:
 
 # Replace placeholders with keywords
 html = html.replace("{Intro}", settings_dict.get("Intro"))
-html = html.replace("{Web}", settings_dict.get("Web"))
+html = html.replace("{Web1}", settings_dict.get("Web1"))
+html = html.replace("{Web2}", settings_dict.get("Web2"))
 html = html.replace("{Name}", settings_dict.get("Name"))
 html = html.replace("{Image_url1}", settings_dict.get("Image_url1"))
 html = html.replace("{Image_url2}", settings_dict.get("Image_url2"))

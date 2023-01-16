@@ -2,18 +2,6 @@ import webbrowser
 import random
 keyword_counter = 0
 
-def insert_keywords_backup(article, keywords_dict, probability):
-    words = article.split()
-    rand_num = random.random()
-    if rand_num < probability: # Insert keyword
-        rand_keyword = random.choice([keywords_dict.get("Keyword1"),keywords_dict.get("Keyword2"),keywords_dict.get("Keyword3")])
-        rand_index = random.randint(0, len(words))
-        words.insert(rand_index,rand_keyword)
-    else:  # Insert empty string
-        rand_index = random.randint(0, len(words))
-        words.insert(rand_index,'')
-    return " ".join(words)
-
 def insert_keywords(article, keywords_dict, probability):
     words = article.split()
     rand_num = random.random()
@@ -29,7 +17,7 @@ def insert_keywords(article, keywords_dict, probability):
     return " ".join(words)
     
 # Open the HTML template file
-with open('seo_structure_full.html', 'r') as file:
+with open('seo_structure.html', 'r') as file:
     html = file.read()
 
 # Open the keywords file
@@ -54,7 +42,8 @@ with open('article.txt', 'r') as file:
     articles = file.readlines()
 
 # Replace placeholders with keywords
-html = html.replace("{Intro}", settings_dict.get("Intro"))
+#html = html.replace("{Intro}", settings_dict.get("Intro")
+html = html.replace("{Intro}", insert_keywords(settings_dict.get("Intro"), settings_dict, 1))
 html = html.replace("{Web1}", settings_dict.get("Web1"))
 html = html.replace("{Web2}", settings_dict.get("Web2"))
 html = html.replace("{Name}", settings_dict.get("Name"))
