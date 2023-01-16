@@ -17,7 +17,7 @@ def insert_keywords(article, keywords_dict, probability):
     return " ".join(words)
     
 # Open the HTML template file
-with open('seo_structure.html', 'r') as file:
+with open('seo_structure_full.html', 'r') as file:
     html = file.read()
 
 # Open the keywords file
@@ -42,8 +42,6 @@ with open('article.txt', 'r') as file:
     articles = file.readlines()
 
 # Replace placeholders with keywords
-#html = html.replace("{Intro}", settings_dict.get("Intro")
-html = html.replace("{Intro}", insert_keywords(settings_dict.get("Intro"), settings_dict, 1))
 html = html.replace("{Web1}", settings_dict.get("Web1"))
 html = html.replace("{Web2}", settings_dict.get("Web2"))
 html = html.replace("{Name}", settings_dict.get("Name"))
@@ -51,7 +49,7 @@ html = html.replace("{Image_url1}", settings_dict.get("Image_url1"))
 html = html.replace("{Image_url2}", settings_dict.get("Image_url2"))
 html = html.replace("{Image_url3}", settings_dict.get("Image_url3"))
 html = html.replace("{Date}", settings_dict.get("Date"))
-html = html.replace("{Tag}", settings_dict.get("Tag"))
+html = html.replace("{Tag}", f'<a href="{settings_dict.get("Web1")}">{settings_dict.get("Keyword1")}</a> <a href="{settings_dict.get("Web2")}">{settings_dict.get("Keyword2")}</a> <a href="{settings_dict.get("Web1")}">{settings_dict.get("Keyword3")}</a>')
 html = html.replace("{Keyword1}", settings_dict.get("Keyword1"))
 html = html.replace("{Keyword2}", settings_dict.get("Keyword2"))
 html = html.replace("{Keyword3}", settings_dict.get("Keyword3"))
@@ -69,10 +67,10 @@ for i, subtopic in enumerate(topics[5:]):
     html = html.replace(placeholder, subtopic.strip())
 
 for i, article in enumerate(articles):
-    
     placeholder = f"{{article{i+1}}}"
     html = html.replace(placeholder, insert_keywords( article.strip(), settings_dict, 0.10 ) )
-    
+
+html = html.replace("{Intro}", insert_keywords(settings_dict.get("Intro"), settings_dict, 1))
 
 # Write the modified HTML to a new file
 with open('output.html', 'w') as file:
