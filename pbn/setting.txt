@@ -1,4 +1,5 @@
-Web=https://www.youtube.com
+Web1=https://www.youtube.com
+Web2=https://www.google.com
 Name=Kiminoto
 Image_url1=https://images.squarespace-cdn.com/content/v1/55a8d6f7e4b054bcba8dfc63/1553722667971-PCITKC64QFSB7YD343GI/test+1.png
 Image_url2=https://thumbs.dreamstime.com/z/under-construction-badge-logo-under-construction-badge-logo-sign-108901883.jpg
