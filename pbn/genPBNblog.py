@@ -15,9 +15,9 @@ def insert_keywords(article, keywords_dict, probability):
         rand_index = random.randint(0, len(words))
         words.insert(rand_index,'')
     return " ".join(words)
-    
+
 # Open the HTML template file
-with open('seo_structure_full.html', 'r') as file:
+with open('seo_structure.html', 'r') as file:
     html = file.read()
 
 # Open the keywords file
@@ -54,17 +54,18 @@ html = html.replace("{Keyword1}", settings_dict.get("Keyword1"))
 html = html.replace("{Keyword2}", settings_dict.get("Keyword2"))
 html = html.replace("{Keyword3}", settings_dict.get("Keyword3"))
 
-# Replace placeholders with topics
 html = html.replace("{Topic1}", topics[0].strip())
 
 for i, topic in enumerate(topics[1:]):
     placeholder = f"{{Topic2-{i+1}}}"
-    html = html.replace(placeholder, topic.strip())
+    #html = html.replace(placeholder, topic.strip())
+    html = html.replace(placeholder, insert_keywords( topic.strip(), settings_dict, 0.20 ) )
 
 #for i, subtopic in enumerate(subtopics):
 for i, subtopic in enumerate(topics[5:]):
     placeholder = f"{{Topic3-{i+1}}}"
-    html = html.replace(placeholder, subtopic.strip())
+    #html = html.replace(placeholder, subtopic.strip())
+    html = html.replace(placeholder, insert_keywords( subtopic.strip(), settings_dict, 0.20 ) )
 
 for i, article in enumerate(articles):
     placeholder = f"{{article{i+1}}}"
